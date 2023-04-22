@@ -208,7 +208,9 @@ public class BuildingCreator : Singleton<BuildingCreator> {
     }
 
     private void DrawItem() {
+        
         tilemap.SetTile(currentGridPosition, tileBase);
+        
     }
 
 }
