@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5782647395221204186}
   m_Layer: 0
-  m_Name: Level
+  m_Name: Count
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42,7 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 653118211695508160}
   m_Layer: 0
-  m_Name: Count
+  m_Name: Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,8 +99,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.7225, y: 0}
-  m_SizeDelta: {x: 168.292, y: 50}
+  m_AnchoredPosition: {x: -30, y: 0}
+  m_SizeDelta: {x: 95.2464, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5634292433448205149
 CanvasRenderer:
@@ -157,8 +157,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -234,8 +234,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 31.1, y: 0}
-  m_SizeDelta: {x: 108.9236, y: 50}
+  m_AnchoredPosition: {x: -70, y: 0}
+  m_SizeDelta: {x: 62.0206, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5769679668245356415
 CanvasRenderer:
@@ -292,8 +292,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -426,11 +426,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 6933378684691759623}
-  countText: {fileID: 2233211345688731037}
+  countText: {fileID: 7088235902179375102}
   usesNumText: {fileID: 0}
-  itemName: {fileID: 7088235902179375102}
+  itemName: {fileID: 2233211345688731037}
   parentAfterDrag: {fileID: 0}
-  item: {fileID: 0}
   buildItem: {fileID: 0}
   count: 1
   usesNum: 5

@@ -17,8 +17,12 @@ public class Loot : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Player")){
-            
-            StartCoroutine(MoveAndCollect(other.transform));
+
+            bool canAdd = InventoryManager.instance.AddItem(buildTtem);
+
+            if (canAdd){
+                StartCoroutine(MoveAndCollect(other.transform));
+            }
         }
     }
     private IEnumerator MoveAndCollect(Transform target){

@@ -2,9 +2,6 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 public class BuildingSystem : MonoBehaviour
 {
-
-
-     [SerializeField] private BuildItem buildItem;
     [SerializeField] private TileBase highlightTile;
     [SerializeField] private Tilemap mainTilemap;
     [SerializeField] private Tilemap tempTilemap;
@@ -16,6 +13,8 @@ public class BuildingSystem : MonoBehaviour
 
 
     private void Update(){
+
+        BuildItem buildItem = InventoryManager.instance.GetSelectedItem(false);
 
         playerPos = mainTilemap.WorldToCell(transform.position);
         
@@ -102,9 +101,7 @@ public class BuildingSystem : MonoBehaviour
 
     private void Build(Vector3Int position, BuildItem itemToBuild){
 
-        tempTilemap.SetTile(position, null);
-        highlighted = false;
-
+        InventoryManager.instance.GetSelectedItem(true);
         mainTilemap.SetTile(position, itemToBuild.tile);
     }
 

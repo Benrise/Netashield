@@ -3,13 +3,16 @@ public class InventoryManager : MonoBehaviour
 {
 
 
+    public static InventoryManager instance;
+    public BuildItem[] startBuildingItems;
+    // public Item[] startItems;
 
     public int maxStackedItems = 10;
     public InventorySlot[] inventorySlots;
+
     public GameObject inventoryItemPrefab;
     
-    public BuildItem[] startBuildingItems;
-    // public Item[] startItems;
+
 
 
     public int slotsForBuild = 3;
@@ -18,13 +21,17 @@ public class InventoryManager : MonoBehaviour
 
     public int selectedSlot = -1;
 
+
+    private void Awake(){
+        instance = this;
+    }
     private void Start(){
         ChangeSelectedSlot(0);
-        // if (startBuildingItems != null) {
-        //     foreach (var buildItem in startBuildingItems){
-        //     AddItem(buildItem);
-        //     }
-        // }
+        if (startBuildingItems != null) {
+            foreach (var buildItem in startBuildingItems){
+            AddItem(buildItem);
+            }
+        }
 
         //     else if (startItems != null) {
         //         foreach (var item in startItems){
@@ -166,37 +173,28 @@ public class InventoryManager : MonoBehaviour
 
 //             return null;
 //    }
-
-   public BuildItem InteractionWithSelectedBuildItem(bool use, bool drop){
-
     
-
-        Debug.Log(selectedSlot);
-        Debug.Log(inventorySlots.Length);
+    public BuildItem GetSelectedItem(bool use){
         InventorySlot slot = inventorySlots[selectedSlot];
-
         InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
             if (itemInSlot != null) 
             {
                 BuildItem buildItem = itemInSlot.buildItem;
-                if (drop){
+                if (use){
                     itemInSlot.count--;
-                    if (itemInSlot.count <= 0){
+                    if (itemInSlot.count <= 0)
+                    {
                         Destroy(itemInSlot.gameObject);
                     }
-                    else{
+                    else
+                    {
                         itemInSlot.RefreshCount();
                     }
                 }
-                else if (use){
-                    Destroy(itemInSlot.gameObject);
-                }
-                else{
-                    Debug.Log("Selected item: " + buildItem);
-                }
+                return buildItem;
             }
 
             return null;
-   }      
+   }   
    
 }

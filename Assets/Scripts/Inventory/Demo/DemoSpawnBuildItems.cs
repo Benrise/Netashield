@@ -18,7 +18,7 @@ public class DemoSpawnBuildItems : MonoBehaviour
     }
 
     public void GetSelectedBuildItem(){
-        BuildItem receivedItem = inventoryManager.InteractionWithSelectedBuildItem(use: false, drop: true );
+        BuildItem receivedItem = inventoryManager.GetSelectedItem(use: false );
         if (receivedItem != null){
             Debug.Log("Received (Dropped)!" + receivedItem);
         }
@@ -27,7 +27,7 @@ public class DemoSpawnBuildItems : MonoBehaviour
         }
     }
     public void UseSelectedBuildItem(){
-        BuildItem usedItem = inventoryManager.InteractionWithSelectedBuildItem(use: true, drop: false );
+        BuildItem usedItem = inventoryManager.GetSelectedItem(use: true);
         if (usedItem != null){
             Debug.Log("Used" + usedItem);
         }
