@@ -64,6 +64,7 @@ GameObject:
   - component: {fileID: 277103285312797568}
   - component: {fileID: 277103285312797571}
   - component: {fileID: 277103285312797570}
+  - component: {fileID: 1930485146}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -80,8 +81,8 @@ Transform:
   m_GameObject: {fileID: 277103285312797621}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.63, y: -5.816, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 277103284194502953}
   m_Father: {fileID: 0}
@@ -186,11 +187,11 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1.06
+  m_GravityScale: 600
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &277103285312797568
 MonoBehaviour:
@@ -216,14 +217,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cca318e97f821d46b3c0019528dcaf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _jumpForce: 150
+  _jumpForce: 90000
   isGrounded: 0
-  _speed: 1.5
+  _speed: 600
   isFlipRight: 1
   _animJump: {fileID: 277103285312797626}
-  _animRun: {fileID: 0}
-  _animIdle: {fileID: 0}
-  pos: {fileID: 0}
+  _animRun: {fileID: 277103285312797626}
+  _animIdle: {fileID: 277103285312797626}
+  pos: {fileID: 11400000, guid: 22b7a00bd8fee754399a692039894f95, type: 2}
 --- !u!114 &277103285312797570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,3 +237,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 740f334f146654247ae55e16312987fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!70 &1930485146
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 277103285312797621}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.005, y: 0}
+  m_Size: {x: 0.08, y: 0.43999997}
+  m_Direction: 0

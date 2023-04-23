@@ -12,7 +12,7 @@ public class PlayerInput : MonoBehaviour
         _playerMovement = GetComponent<PlayerMovement>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         float horizontalDirection = Input.GetAxis(GlobalStringVars.HORIZONTAL_AXIS);
         bool isJumpButtonPressed = Input.GetButtonDown(GlobalStringVars.JUMP);

@@ -10,10 +10,16 @@ EditorBuildSettings:
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/Home Scene.unity
-    guid: 6c7b3344fa6c54246b8a542109c1825c
+    guid: e4145b70ec9dedb4b80756bdb4f10305
   - enabled: 1
     path: Assets/Scenes/Exit A.unity
     guid: 6ba7092ee99a46544ba1fb19511e824a
+  - enabled: 1
+    path: Assets/Scenes/Workspace.unity
+    guid: 440ec192a6e4df74b9a79f6699473ace
+  - enabled: 1
+    path: Assets/Scenes/Servers.unity
+    guid: a463a631ecd23b54bad566476d8bc2cd
   - enabled: 1
     path: Assets/Scenes/Map.unity
     guid: d3e923f60caff9c4ab233ce5904af782
