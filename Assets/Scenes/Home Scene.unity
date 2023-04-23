@@ -1412,6 +1412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6273b89eca8513147964418004d4c72e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startBuildingItems: []
   maxStackedItems: 10
   inventorySlots:
   - {fileID: 370560257}
@@ -1445,10 +1446,9 @@ MonoBehaviour:
   - {fileID: 1720693130}
   - {fileID: 2136859478}
   inventoryItemPrefab: {fileID: 4682113877896604917, guid: fc520a21210c1714490c0c0e7c21261e, type: 3}
-  startBuildingItems: []
-  startItems: []
   slotsForBuild: 3
   slotsForInventory: 6
+  selectedSlot: -1
 --- !u!4 &372310213
 Transform:
   m_ObjectHideFlags: 0
@@ -6385,7 +6385,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 277103285312797624, guid: 4cd142887eeee3b4aaf7511ab26b5d64, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -200
+      value: -250
       objectReference: {fileID: 0}
     - target: {fileID: 277103285312797624, guid: 4cd142887eeee3b4aaf7511ab26b5d64, type: 3}
       propertyPath: m_LocalPosition.z

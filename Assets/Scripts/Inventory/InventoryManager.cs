@@ -131,11 +131,11 @@ public class InventoryManager : MonoBehaviour
 
    }
 
-//    void SpawnNewItem(Item item, InventorySlot slot){
-//         GameObject newItemGo = Instantiate(inventoryItemPrefab, slot.transform);
-//         InventoryItem inventoryItem = newItemGo.GetComponent<InventoryItem>();
-//         inventoryItem.InitialiseItem(item);
-//    }
+   void SpawnNewItem(Item item, InventorySlot slot){
+        GameObject newItemGo = Instantiate(inventoryItemPrefab, slot.transform);
+        InventoryItem inventoryItem = newItemGo.GetComponent<InventoryItem>();
+        inventoryItem.InitialiseItem(item);
+   }
 
    void SpawnNewItem(BuildItem buildItem, InventorySlot slot){
         GameObject newItemGo = Instantiate(inventoryItemPrefab, slot.transform);
@@ -146,32 +146,32 @@ public class InventoryManager : MonoBehaviour
    }
 
 
-//    public Item InteractionWithSelectedItem(bool use, bool drop){
+   public Item InteractionWithSelectedItem(bool use, bool drop){
 
-//         InventorySlot slot = inventorySlots[selectedSlot];
-//         InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
-//             if (itemInSlot != null) 
-//             {
-//                 Item item = itemInSlot.item;
-//                 if (drop){
-//                     itemInSlot.count--;
-//                     if (itemInSlot.count <= 0){
-//                         Destroy(itemInSlot.gameObject);
-//                     }
-//                     else{
-//                         itemInSlot.RefreshCount();
-//                     }
-//                 }
-//                 else if (use){
-//                     Destroy(itemInSlot.gameObject);
-//                 }
-//                 else{
-//                     Debug.Log("Selected item: " + item);
-//                 }
-//             }
+        InventorySlot slot = inventorySlots[selectedSlot];
+        InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+            if (itemInSlot != null) 
+            {
+                Item item = itemInSlot.item;
+                if (drop){
+                    itemInSlot.count--;
+                    if (itemInSlot.count <= 0){
+                        Destroy(itemInSlot.gameObject);
+                    }
+                    else{
+                        itemInSlot.RefreshCount();
+                    }
+                }
+                else if (use){
+                    Destroy(itemInSlot.gameObject);
+                }
+                else{
+                    Debug.Log("Selected item: " + item);
+                }
+            }
 
-//             return null;
-//    }
+            return null;
+   }
     
     public BuildItem GetSelectedItem(bool use){
         InventorySlot slot = inventorySlots[selectedSlot];
