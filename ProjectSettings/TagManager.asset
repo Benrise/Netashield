@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Interaction
   - Block
+  - Enemy
   layers:
   - Default
   - TransparentFX

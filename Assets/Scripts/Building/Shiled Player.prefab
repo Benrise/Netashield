@@ -99,11 +99,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35d7a716beddc444c8f4c038721537f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 53afb61dbe843144d964267db7ad9ccb, type: 2}
   highlightTile: {fileID: 11400000, guid: 1b9ebd4558177ca4a89be8d4b6a54fe1, type: 2}
   mainTilemap: {fileID: 0}
   tempTilemap: {fileID: 0}
-  getBuildingBlockPrefab: {fileID: 7083021267855927697, guid: efe7ef5c888a82347b8d0795f1abf21a, type: 3}
+  lootPrefab: {fileID: 0}
 --- !u!1 &4756074328812888359
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,7 +186,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.84, y: 0.84}
+  m_Size: {x: 16.8, y: 16.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

@@ -16,6 +16,8 @@ public class Enemy : MonoBehaviour
     private Health health;
 
 
+    private float stopTime = 3f;
+    private bool isStopped = false;
 
 
 
@@ -26,7 +28,16 @@ public class Enemy : MonoBehaviour
     }
 
     void Update(){
-        Direct();
+        if(!isStopped){
+            Direct();
+        }
+        if (isStopped) {
+            stopTime -= Time.deltaTime;
+            if (stopTime <= 0f) {
+                isStopped = false;
+                stopTime = 3f;
+            }
+        }
     }
 
 
@@ -50,14 +61,16 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider) {
 
-        
-
         if(collider.CompareTag("Player")){
             if (collider.GetComponent<Health>() != null){
                 collider.GetComponent<Health>().Damage(damage);
                 this.GetComponent<Health>().Damage(10000);
             }
         } 
+
+        if (collider.CompareTag("Block")) {
+            isStopped = true;
+        }
     }
 
     

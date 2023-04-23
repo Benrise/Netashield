@@ -81,8 +81,6 @@ public class BuildingSystem : MonoBehaviour
 
 
     private bool CheckCondition(RuleTileWithData tile, BuildItem currentItem){
-        Debug.Log(tile);
-        Debug.Log(currentItem);
         if (currentItem.type == ItemType.BuildingBlock){
             if (!tile){
                 return true;
@@ -117,5 +115,7 @@ public class BuildingSystem : MonoBehaviour
         loot.GetComponent<Loot>().Initialize(tile.buildItem);
         
     }
-    
+
+
 }
+    

@@ -17,4 +17,4 @@ MonoBehaviour:
   type: 2
   stackable: 1
   actionType: 3
-  range: {x: 9999999, y: 9999999}
+  range: {x: 17, y: 17}

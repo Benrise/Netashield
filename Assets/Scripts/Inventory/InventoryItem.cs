@@ -30,7 +30,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         // else if (buildItem != null) {
         //      InitialiseItem(buildItem);
         // }
-
+        count = 999;
         InitialiseItem(buildItem);
         RefreshInfo();
     }
@@ -71,7 +71,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void RefreshCount(){
         countText.text = count.ToString();
-        Debug.Log(countText.text);
         bool isTextActive = count > 1;
         Transform parentTransform = countText.transform.parent;
         parentTransform.gameObject.SetActive(isTextActive);
