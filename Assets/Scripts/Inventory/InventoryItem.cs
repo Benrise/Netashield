@@ -11,47 +11,66 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public TMP_Text countText;
     public TMP_Text usesNumText;
 
+    public TMP_Text itemName;
+
     [HideInInspector]public Transform parentAfterDrag;
 
-    [HideInInspector]public Item item;
+    //[HideInInspector]public Item item;
+    [HideInInspector]public BuildItem buildItem;
     [HideInInspector]public int count = 1;
     [HideInInspector]public int usesNum = 5;
 
+    
 
+    
     private void Start(){
-        InitialiseItem(item);
+        // if (item != null) {
+        //     InitialiseItem(item);
+        // }
+        // else if (buildItem != null) {
+        //      InitialiseItem(buildItem);
+        // }
+
+        InitialiseItem(buildItem);
         RefreshInfo();
     }
 
-    public void InitialiseItem(Item newItem) {
-        item = newItem;
-        image.sprite = newItem.image;
+    // public void  InitialiseItem(Item newItem) {
+    //     this.item = newItem;
+    //     image.sprite = newItem.image;
+    //     RefreshCount();
+    // }
+
+    public void InitialiseItem(BuildItem newBuildItem) {
+        this.buildItem = newBuildItem;
+        image.sprite = newBuildItem.image;
         RefreshCount();
     }
 
     public void RefreshInfo(){
-        if (item.stackable){
-            countText.transform.parent.gameObject.SetActive(true);
-            usesNumText.transform.parent.gameObject.SetActive(false);
-        } else {
-            countText.transform.parent.gameObject.SetActive(false);
-            usesNumText.transform.parent.gameObject.SetActive(true);
-        }
-        if (item.type == ItemType.Tool && item.stackable) {
-            countText.transform.parent.gameObject.SetActive(true);
-            usesNumText.transform.parent.gameObject.SetActive(false);
-        }
-        else if (item.type == ItemType.CraftingItem){
-            countText.transform.parent.gameObject.SetActive(false);
-            usesNumText.transform.parent.gameObject.SetActive(false);
-        }
+        // if (item != null) {
+        //     if (item.stackable){
+        //     countText.transform.parent.gameObject.SetActive(true);
+        //     usesNumText.transform.parent.gameObject.SetActive(false);
+        //     } else {
+        //         countText.transform.parent.gameObject.SetActive(false);
+        //         usesNumText.transform.parent.gameObject.SetActive(true);
+        //     }
+        //     if (item.type == ItemType.Tool && item.stackable) {
+        //         countText.transform.parent.gameObject.SetActive(true);
+        //         usesNumText.transform.parent.gameObject.SetActive(false);
+        //     }
+        //     else if (item.type == ItemType.CraftingItem){
+        //         countText.transform.parent.gameObject.SetActive(false);
+        //         usesNumText.transform.parent.gameObject.SetActive(false);
+        //     }
+        // }
     }
 
 
 
     public void RefreshCount(){
         countText.text = count.ToString();
-        Debug.Log(count);
         bool isTextActive = count > 1;
         Transform parentTransform = countText.transform.parent;
         parentTransform.gameObject.SetActive(isTextActive);

@@ -7,12 +7,17 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private float speed = 1.5f;
 
+    public int cost = 1;
     [SerializeField]
     private EnemyData data;
 
     private GameObject player;
 
     private Health health;
+
+
+
+
 
     void Start() {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -36,6 +41,7 @@ public class Enemy : MonoBehaviour
         GetComponent<Health>().SetHealth(data.hp, data.hp);
         damage = data.damage;
         speed = data.speed;
+        cost = data.cost;
     }
 
     private void Direct(){
@@ -43,11 +49,16 @@ public class Enemy : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collider) {
+
+        
+
         if(collider.CompareTag("Player")){
             if (collider.GetComponent<Health>() != null){
                 collider.GetComponent<Health>().Damage(damage);
                 this.GetComponent<Health>().Damage(10000);
             }
-        }   
+        } 
     }
+
+    
 }

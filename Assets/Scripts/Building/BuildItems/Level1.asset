@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Level1
   m_EditorClassIdentifier: 
   tile: {fileID: 11400000, guid: 90660d58d84fcb04e96e0c60a4168f2c, type: 2}
-  image: {fileID: -1795014518, guid: 8935637e32f82ec429af64d284cf63a8, type: 3}
+  image: {fileID: 1388467132, guid: 8935637e32f82ec429af64d284cf63a8, type: 3}
   type: 2
+  stackable: 1
   actionType: 3
   range: {x: 9999999, y: 9999999}

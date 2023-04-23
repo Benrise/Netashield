@@ -16,4 +16,4 @@ MonoBehaviour:
   m_DefaultGameObject: {fileID: 0}
   m_DefaultColliderType: 1
   m_TilingRules: []
-  item: {fileID: 11400000, guid: d572f2090e77828418bcea55ebfaec60, type: 2}
+  buildItem: {fileID: 11400000, guid: d572f2090e77828418bcea55ebfaec60, type: 2}

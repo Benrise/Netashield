@@ -1445,6 +1445,10 @@ MonoBehaviour:
   - {fileID: 1720693130}
   - {fileID: 2136859478}
   inventoryItemPrefab: {fileID: 4682113877896604917, guid: fc520a21210c1714490c0c0e7c21261e, type: 3}
+  startBuildingItems: []
+  startItems: []
+  slotsForBuild: 3
+  slotsForInventory: 6
 --- !u!4 &372310213
 Transform:
   m_ObjectHideFlags: 0

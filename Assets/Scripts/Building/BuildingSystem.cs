@@ -2,16 +2,15 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 public class BuildingSystem : MonoBehaviour
 {
-    [SerializeField] private BuildItem item;
 
+
+     [SerializeField] private BuildItem buildItem;
     [SerializeField] private TileBase highlightTile;
     [SerializeField] private Tilemap mainTilemap;
     [SerializeField] private Tilemap tempTilemap;
-    [SerializeField] private GameObject getBuildingBlockPrefab;
-
+    [SerializeField] private GameObject lootPrefab;
 
     private Vector3Int playerPos;
-
     private Vector3Int highlightedTilePos;
     private bool highlighted;
 
@@ -19,17 +18,17 @@ public class BuildingSystem : MonoBehaviour
     private void Update(){
 
         playerPos = mainTilemap.WorldToCell(transform.position);
-
-        if(item != null){
-            HighlightedTile(item);
+        
+        if(buildItem != null){
+            HighlightedTile(buildItem);
         }
 
         if (Input.GetMouseButtonDown(0)){
             if(highlighted){
-                if (item.type == ItemType.BuildingBlock){
-                    Build(highlightedTilePos, item);
+                if (buildItem.type == ItemType.BuildingBlock){
+                    Build(highlightedTilePos, buildItem);
                 }
-                else if (item.type == ItemType.Tool){
+                else if (buildItem.type == ItemType.Tool){
                     Destroy(highlightedTilePos);
                 }
             }
@@ -50,9 +49,7 @@ public class BuildingSystem : MonoBehaviour
 
         if(highlightedTilePos != mouseGridPos){
             tempTilemap.SetTile(highlightedTilePos, null);
-
-
-            if(InRange(playerPos, mouseGridPos, (Vector3Int) currentItem.range)){
+            if(InRange(playerPos, mouseGridPos, (Vector3Int)currentItem.range)){
                 if (CheckCondition(mainTilemap.GetTile<RuleTileWithData>(mouseGridPos), currentItem)){
                     tempTilemap.SetTile(mouseGridPos, highlightTile);
                     highlightedTilePos = mouseGridPos;
@@ -73,7 +70,6 @@ public class BuildingSystem : MonoBehaviour
 
 
 
-    //-----------------------------------------------------------------
     private bool InRange(Vector3Int positionA, Vector3Int positionB, Vector3Int range){
         Vector3Int distance = positionA - positionB;
 
@@ -86,6 +82,8 @@ public class BuildingSystem : MonoBehaviour
 
 
     private bool CheckCondition(RuleTileWithData tile, BuildItem currentItem){
+        Debug.Log(tile);
+        Debug.Log(currentItem);
         if (currentItem.type == ItemType.BuildingBlock){
             if (!tile){
                 return true;
@@ -93,7 +91,7 @@ public class BuildingSystem : MonoBehaviour
         }
         else if(currentItem.type == ItemType.Tool){
             if (tile){
-                if (tile.item.actionType == currentItem.actionType){
+                if (tile.buildItem.actionType == currentItem.actionType){
                     return true;
                 }
             }
@@ -103,9 +101,9 @@ public class BuildingSystem : MonoBehaviour
 
 
     private void Build(Vector3Int position, BuildItem itemToBuild){
+
         tempTilemap.SetTile(position, null);
         highlighted = false;
-        //remove block from storage
 
         mainTilemap.SetTile(position, itemToBuild.tile);
     }
@@ -118,8 +116,8 @@ public class BuildingSystem : MonoBehaviour
         mainTilemap.SetTile(position, null);
 
         Vector3 pos = mainTilemap.GetCellCenterWorld(position);
-        GameObject gettingBlock = Instantiate(getBuildingBlockPrefab, pos, Quaternion.identity);
-        gettingBlock.GetComponent<GettingBlock>().Initialize(tile.item);
+        GameObject loot = Instantiate(lootPrefab, pos, Quaternion.identity);
+        loot.GetComponent<Loot>().Initialize(tile.buildItem);
         
     }
     

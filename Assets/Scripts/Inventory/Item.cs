@@ -1,34 +1,34 @@
-using UnityEngine;
+// using UnityEngine;
 
-[CreateAssetMenu(menuName = "Scriptable object/Inventory/ Item")]
-public class Item : ScriptableObject
-{
-    [Header("Only gameplay")]
-    public ItemType type;
-    public ActionType actionType;
+// [CreateAssetMenu(menuName = "Scriptable object/Inventory/ Item")]
+// public class Item : ScriptableObject
+// {
+//     [Header("Only gameplay")]
+//     public ItemType type;
+//     public ActionType actionType;
 
-    [Header("Only UI")]
-    public bool stackable = true;
+//     [Header("Only UI")]
+//     public bool stackable = true;
 
 
-    [Header("Both")]
-    public Sprite image;
+//     [Header("Both")]
+//     public Sprite image;
 
-}
+// }
 
-public enum ItemType {
-    CraftingItem,
-    Tool,
-    BuildingBlock
-}
+// public enum ItemType {
+//     CraftingItem,
+//     Tool,
+//     BuildingBlock
+// }
 
-public enum ActionType {
-    Use,
+// public enum ActionType {
+//     Use,
     
-    Craft,
-    Quest,
+//     Craft,
+//     Quest,
 
-    Build,
+//     Build,
 
-    Remove
-}
+//     Remove
+// }

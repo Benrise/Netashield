@@ -1,36 +1,32 @@
 using System.Collections;
 using UnityEngine;
 
-public class GettingBlock : MonoBehaviour
+public class Loot : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer sr;
     [SerializeField] private BoxCollider2D collider;
     [SerializeField] private float moveSpeed;
 
-    private BuildItem item;
+    private BuildItem buildTtem;
 
-    public void Initialize(BuildItem item){
-        this.item = item;
-        sr.sprite = item.image;
+    public void Initialize(BuildItem buildTtem){
+        this.buildTtem = buildTtem;
+        sr.sprite = buildTtem.image;
     }
 
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Player")){
+            
             StartCoroutine(MoveAndCollect(other.transform));
         }
     }
     private IEnumerator MoveAndCollect(Transform target){
         Destroy(collider);
-
         while (transform.position != target.position){
             transform.position = Vector3.MoveTowards (transform.position, target.position, moveSpeed * Time.deltaTime);
             yield return 0;
         }
-
-        yield return new WaitForSeconds(0.1f);
-        Destroy(gameObject);
-
         Destroy(gameObject);
     }
     

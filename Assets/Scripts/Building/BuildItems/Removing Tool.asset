@@ -15,5 +15,6 @@ MonoBehaviour:
   tile: {fileID: 0}
   image: {fileID: 0}
   type: 1
+  stackable: 0
   actionType: 3
   range: {x: 9999999, y: 9999999}

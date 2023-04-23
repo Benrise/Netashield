@@ -9,14 +9,14 @@ public class InventorySlot : MonoBehaviour, IDropHandler
 
     private void Awake(){
         Deselect();
-
     }
-    public void Select(){
+    public void Select(){   
         GetComponent<Image>().sprite = selectedSlotImage;
     }
+    
 
     public void Deselect(){
-         GetComponent<Image>().sprite = defaultSlotImage;
+        GetComponent<Image>().sprite = defaultSlotImage;
     }
 
     public void OnDrop(PointerEventData eventData){
