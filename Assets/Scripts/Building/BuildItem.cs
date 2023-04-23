@@ -12,7 +12,7 @@ public class BuildItem : ScriptableObject {
     public ActionType actionType;
 
     
-    public Vector2Int Range = new Vector2Int(10, 10);
+    public Vector2Int range = new Vector2Int(9999999, 9999999);
 }
 
 

@@ -4,10 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - BgMusicMenuSlider
-  - BgMusicMenuText
-  - BgMusicMenuCreated
-  - BgMusicMenuMuteButton
   - Interaction
   layers:
   - Default
@@ -16,7 +12,7 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
+  - GettingBlock
   - 
   - 
   - 

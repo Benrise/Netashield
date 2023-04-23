@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abac47cf93ec09a4a989b0a434ac1128, type: 3}
-  m_Name: Removing Tool
+  m_Script: {fileID: 11500000, guid: 2f4803fe56ffacc4c91d43da1db056e7, type: 3}
+  m_Name: Enemy1 1
   m_EditorClassIdentifier: 
-  tile: {fileID: 0}
-  image: {fileID: 0}
-  type: 1
-  actionType: 3
-  range: {x: 9999999, y: 9999999}
+  hp: 25
+  damage: 5
+  speed: 1.5
