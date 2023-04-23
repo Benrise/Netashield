@@ -3,7 +3,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField]
-    private int damage = 5;
+    private int damage = 1;
     [SerializeField]
     private float speed = 1.5f;
 
@@ -12,22 +12,40 @@ public class Enemy : MonoBehaviour
 
     private GameObject player;
 
+    private Health health;
+
     void Start() {
         player = GameObject.FindGameObjectWithTag("Player");
+        health = GetComponent<Health>();
+        SetEnemyValues();
     }
 
     void Update(){
         Direct();
     }
 
+
+
+    private void OnMouseDown()
+    {
+        this.GetComponent<Health>().Damage(damage);
+    }
+
+
+    private void SetEnemyValues(){
+        GetComponent<Health>().SetHealth(data.hp, data.hp);
+        damage = data.damage;
+        speed = data.speed;
+    }
+
     private void Direct(){
         transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        if(GetComponent<Collider>().CompareTag("Player")){
-            if (GetComponent<Collider>().GetComponent<Health>() != null){
-                GetComponent<Collider>().GetComponent<Health>().Damage(damage);
+    private void OnTriggerEnter2D(Collider2D collider) {
+        if(collider.CompareTag("Player")){
+            if (collider.GetComponent<Health>() != null){
+                collider.GetComponent<Health>().Damage(damage);
                 this.GetComponent<Health>().Damage(10000);
             }
         }   

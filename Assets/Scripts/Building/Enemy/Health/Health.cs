@@ -27,11 +27,11 @@ public class Health : MonoBehaviour
         this.health -= amount;
         negativeCheck(amount);
         this.health -= amount;
-
         if (health <= 0){
             Die();
         }
     }
+
 
     public void Heal(int amount){
         negativeCheck(amount);
@@ -57,7 +57,7 @@ public class Health : MonoBehaviour
 
 
     private void Die(){
-        Debug.Log("Digital death comes...");
+        Debug.Log("For: " + gameObject.name + " Digital death comes...");
         Destroy(gameObject);
     }
 
