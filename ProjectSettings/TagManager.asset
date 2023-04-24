@@ -7,22 +7,24 @@ TagManager:
   - Interaction
   - Block
   - Enemy
+  - BgMusicMenuSlider
+  - Damaheable
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ground
+  - 
   - Water
   - UI
+  - Ground
+  - Bullet
+  - Player
+  - Enemy
+  - Bridge
+  - Background
+  - Invize
   - Loot
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Objects
   - 
   - 
   - 
@@ -44,9 +46,21 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Ground
+    uniqueID: 2352516165
+    locked: 0
+  - name: Wall
+    uniqueID: 2016134911
+    locked: 0
+  - name: Stairs
+    uniqueID: 2138943263
+    locked: 0
   - name: Objects
     uniqueID: 416251139
     locked: 0
   - name: Player
     uniqueID: 1217263107
+    locked: 0
+  - name: RightWall
+    uniqueID: 1182878025
     locked: 0

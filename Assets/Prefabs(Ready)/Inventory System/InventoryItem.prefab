@@ -334,8 +334,10 @@ MonoBehaviour:
   image: {fileID: 6098726177385256107}
   countText: {fileID: 5999578222393237915}
   usesNumText: {fileID: 3199089923621632385}
+  itemName: {fileID: 0}
   parentAfterDrag: {fileID: 0}
   item: {fileID: 0}
+  buildItem: {fileID: 0}
   count: 1
   usesNum: 5
 --- !u!114 &6098726177385256107

@@ -1,42 +1,42 @@
-    using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float _jumpForce;
     [SerializeField] private bool isGrounded;
     [SerializeField] private float _speed;
-    [SerializeField] private bool isFlipRight = true;
+    [SerializeField] private SpriteRenderer sp;
     [SerializeField] private Animator _animJump;
     [SerializeField] private Animator _animRun;
     [SerializeField] private Animator _animIdle;
-    private Rigidbody2D rb;
+    [SerializeField] private GameObject _triggerUpStairs;
+    [SerializeField] private GameObject _triggerDownStairs;
 
-    public VectorValue pos;
+    private Rigidbody2D rb;
 
     private void Awake()
     {
-        transform.position = pos.initialValue;
         rb = GetComponent<Rigidbody2D>();
         _animJump = GetComponent<Animator>();
         _animRun = GetComponent<Animator>();
         _animIdle = GetComponent<Animator>();
-
     }
-
 
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
             isGrounded = true;
+            _triggerDownStairs.SetActive(true);
+            _triggerUpStairs.SetActive(true);
+        }
     }
 
 
-    public void Move(float direction, bool isJumpButtonPressed)
+    [SerializeField]public void Move(float direction, bool isJumpButtonPressed)
     {
         if (direction == 0 && isJumpButtonPressed == false)
         {
@@ -45,25 +45,25 @@ public class PlayerMovement : MonoBehaviour
 
         if (isJumpButtonPressed && isGrounded)
         {
+            _animJump.SetTrigger("isJump");
             isGrounded = false;
             rb.AddForce(new Vector2(0, _jumpForce));
-            _animJump.SetTrigger("isJump");
         }
 
         if (direction != 0)
         {
-            if (direction > 0 && !isFlipRight)
+            if (direction > 0 && sp.flipX)
             {
-                Flip();
+                sp.flipX = !sp.flipX;
             }
 
-            else if (direction < 0 && isFlipRight)
+            else if (direction < 0 && !sp.flipX)
             {
-                Flip();
+                sp.flipX = !sp.flipX;
             }
             HorizontalMovement(direction);
         }
- 
+
     }
 
 
@@ -71,13 +71,5 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.velocity = new Vector2(direction * _speed, rb.velocity.y);
         _animRun.SetTrigger("isRun");
-    }
-
-    public void Flip()
-    {
-        isFlipRight = !isFlipRight;
-        Vector3 theScale = transform.localScale;
-        theScale.x *= -1;
-        transform.localScale = theScale;
     }
 }
