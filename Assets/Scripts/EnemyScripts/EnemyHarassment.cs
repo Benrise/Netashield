@@ -38,10 +38,9 @@ public class EnemyHarassment : MonoBehaviour
 
     void Start()
     {
-        if (gameObject.tag == "Enemy")
-        {
-            StartCoroutine(Say());
-        }
+
+        StartCoroutine(Say());
+
         
         _shooter = GetComponent<Shooter>();
         _maxTimeShoot = _timeShoot;

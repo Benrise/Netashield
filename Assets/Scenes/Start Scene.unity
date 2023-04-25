@@ -12435,6 +12435,10 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 363563544}
+    - target: {fileID: 113396287882189045, guid: 4e05b219fe282a240b5a3ea3f6a754c5, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeMusicVolume
+      objectReference: {fileID: 0}
     - target: {fileID: 113396287882189047, guid: 4e05b219fe282a240b5a3ea3f6a754c5, type: 3}
       propertyPath: m_Name
       value: Slider
