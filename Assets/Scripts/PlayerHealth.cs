@@ -17,7 +17,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private GameObject activeDeath;
 
 
-
+    [SerializeField] private AudioSource deathSound;
+    [SerializeField] private AudioSource getDamageSound;
     private bool isAlive;
 
     private void Awake()
@@ -52,10 +53,12 @@ public class PlayerHealth : MonoBehaviour
     IEnumerator showDeathWindow()
         {
             yield return new WaitForSeconds(3);
+            deathSound.Play();
             activeDeath.SetActive(true);
         }
         public void TakeDamage(float damage)
         {
+            getDamageSound.Play();
             _currentHealthe -= damage;
             CheckIsAlive();
         }

@@ -16,12 +16,32 @@ public class HackEnemy : MonoBehaviour
     [SerializeField] private Image _iconImage;
     [SerializeField] private Animator _deadAim;
 
+    [SerializeField] private AudioSource _deactivateEffect;
+    [SerializeField] private AudioSource _deactivateSay;
+
+     [SerializeField] private AudioSource _sayToRemove;
+
     private Transform target;
 
     private void Awake()
     {
         target = GameObject.FindWithTag("Enemy").transform;
+        StartCoroutine(Say());
     }
+
+
+    public IEnumerator Say(){
+        while (true)
+        {
+            _sayToRemove.Play();
+
+            float delay = Random.Range(3, 10);
+
+            yield return new WaitForSeconds(delay);
+        }
+    }
+
+
     private void Update()
     {
         float distance = Vector2.Distance(transform.position, target.position);
@@ -40,8 +60,19 @@ public class HackEnemy : MonoBehaviour
             //_enemy.enabled = false;
             _iconImage.GetComponent<Image>().sprite = _iconHack;
             _iconImage.fillAmount = 1;
+            Destroy(_sayToRemove);
+            _deactivateEffect.Play();
+            StartCoroutine(DeactivateRobot());
             _deadAim.SetTrigger("isDeadRobot");
+            StopCoroutine(Say());
         }
+    }
+
+    IEnumerator DeactivateRobot()
+    {
+        _deactivateSay.Play();
+
+        yield return new WaitForSeconds(0.5f);
     }
 
     private void CheckDistance(float distance)

@@ -2459,11 +2459,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4140747535315056470, guid: 32a6cf16fe9468a4893e1d457cb6a4ad, type: 3}
       propertyPath: position.x
-      value: 300
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 4140747535315056470, guid: 32a6cf16fe9468a4893e1d457cb6a4ad, type: 3}
       propertyPath: position.y
-      value: -270
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4140747535315056470, guid: 32a6cf16fe9468a4893e1d457cb6a4ad, type: 3}
+      propertyPath: position.z
+      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32a6cf16fe9468a4893e1d457cb6a4ad, type: 3}
@@ -3663,7 +3667,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1673737170}
         m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
         m_MethodName: FadeToLevel
         m_Mode: 1
@@ -3675,7 +3679,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1673737170}
         m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
         m_MethodName: OnFadeComplete
         m_Mode: 3

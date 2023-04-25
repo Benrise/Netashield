@@ -27,7 +27,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1817812302076673981}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -122,7 +122,43 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1817812302076673974}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 673625683707231782, guid: d5bcf7b2123d69049b70b096b9610352, type: 3}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!95 &1817812302076673971
 Animator:
   serializedVersion: 5
@@ -240,12 +276,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7491205072838036440, guid: db67f0dfc2c9fa245971ac0fe084a1dc, type: 3}
       propertyPath: m_text
-      value: Button Text
+      value: "\u0421\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u0438\u044F"
       objectReference: {fileID: 0}
     - target: {fileID: 7491205072838036440, guid: db67f0dfc2c9fa245971ac0fe084a1dc, type: 3}
       propertyPath: m_fontSize
       value: 24
       objectReference: {fileID: 0}
+    - target: {fileID: 7491205072838036440, guid: db67f0dfc2c9fa245971ac0fe084a1dc, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 48e691024b11d22479c93d5df69f8803, type: 2}
     - target: {fileID: 7491205072838036440, guid: db67f0dfc2c9fa245971ac0fe084a1dc, type: 3}
       propertyPath: m_fontColor.b
       value: 1
@@ -262,6 +302,10 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 24
       objectReference: {fileID: 0}
+    - target: {fileID: 7491205072838036440, guid: db67f0dfc2c9fa245971ac0fe084a1dc, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 9176951213218626719, guid: 48e691024b11d22479c93d5df69f8803, type: 2}
     - target: {fileID: 7491205072838036440, guid: db67f0dfc2c9fa245971ac0fe084a1dc, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4294967295

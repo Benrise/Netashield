@@ -14,6 +14,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject _triggerUpStairs;
     [SerializeField] private GameObject _triggerDownStairs;
 
+
+    [SerializeField] private AudioSource _jumpedSound;
+
     private Rigidbody2D rb;
 
     private void Awake()
@@ -46,7 +49,9 @@ public class PlayerMovement : MonoBehaviour
         if (isJumpButtonPressed && isGrounded)
         {
             _animJump.SetTrigger("isJump");
+
             isGrounded = false;
+            _jumpedSound.Play();
             rb.AddForce(new Vector2(0, _jumpForce));
         }
 

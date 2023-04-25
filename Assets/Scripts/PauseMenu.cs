@@ -8,6 +8,12 @@ public class PauseMenu : MonoBehaviour
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
 
+    [SerializeField] private int lastScene;
+
+    public void Start(){
+        lastScene = SceneManager.GetActiveScene().buildIndex;
+    }
+
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -40,6 +46,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Quit()
     {
+        PlayerPrefs.SetInt("lastScene", lastScene);
         Time.timeScale = 1f;
         SceneManager.LoadScene(0);
     }

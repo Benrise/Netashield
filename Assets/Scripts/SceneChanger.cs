@@ -6,7 +6,10 @@ using UnityEngine.SceneManagement;
 public class SceneChanger : MonoBehaviour
 {
     private Animator anim;
-    //public int sceneToLoad;
+
+    private int lastScene;
+    private Vector3 lastPosition;
+    
 
     public Vector3 position;
     public VectorValue playerStorage;
@@ -24,8 +27,19 @@ public class SceneChanger : MonoBehaviour
 
     public void OnFadeComplete(int sceneToLoad)
     {
-        Debug.Log("Fade Complete");
         playerStorage.initialValue = position;
         SceneManager.LoadScene(sceneToLoad);
+    }
+
+    public void OnFadeCompleteContinue(int sceneToLoad){
+        if (PlayerPrefs.HasKey("lastScene")){
+            sceneToLoad = PlayerPrefs.GetInt("lastScene");
+            playerStorage.initialValue = lastPosition;
+            SceneManager.LoadScene(sceneToLoad);
+        }
+
+    }
+    public void OnFadeCompleteMenu(){
+        SceneManager.LoadScene(0);
     }
 }

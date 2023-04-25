@@ -10,13 +10,39 @@ public class EnemyHarassment : MonoBehaviour
     [SerializeField] private float _timeShoot;
     [SerializeField] private CheckTriggerEnemy isCheckDistance;
     [SerializeField] private Animator _aimRun;
+    [SerializeField] private AudioSource _shootSound;
 
+     [SerializeField] private AudioSource _voiceSound;
+
+     [SerializeField] private float minDelay = 5f;
+
+    [SerializeField] private float maxDelay = 10f;
+
+
+  
+    
     private bool isFlipRight;
     private float _maxTimeShoot;
     private Shooter _shooter;
 
+    public IEnumerator Say(){
+        while (true)
+        {
+            _voiceSound.Play();
+
+            float delay = Random.Range(minDelay, maxDelay);
+
+            yield return new WaitForSeconds(delay);
+        }
+    }
+
     void Start()
     {
+        if (gameObject.tag == "Enemy")
+        {
+            StartCoroutine(Say());
+        }
+        
         _shooter = GetComponent<Shooter>();
         _maxTimeShoot = _timeShoot;
     }
@@ -38,6 +64,7 @@ public class EnemyHarassment : MonoBehaviour
             _timeShoot -= Time.deltaTime;
             if (_timeShoot <= 0)
             {
+                _shootSound.Play();
                 _shooter.Shoot(isCheckDistance.isCheckTrigger, direction);
                 _timeShoot = _maxTimeShoot;
             }
