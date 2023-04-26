@@ -18,6 +18,10 @@ public class WaveSpawner : MonoBehaviour
     private float enemy3 = 5.5f;
     private float enemy4 = 6.5f;
 
+    public GameObject winWindow;
+
+    public int waveLevel;
+
     private IEnumerator spawnEnemy(float interval, GameObject enemy){
         yield return new WaitForSeconds(interval);
         GameObject newEnemy = Instantiate(enemy, new Vector3(Random.Range(-500f, 500), Random.Range(-600f, 600f), 0), Quaternion.identity);

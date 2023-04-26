@@ -12,12 +12,6 @@ public class BuildItem : ScriptableObject {
 
     
     public Vector2Int range = new Vector2Int(9999999, 9999999);
-
-
-
-
-
-
 }
 
 public enum ItemType {

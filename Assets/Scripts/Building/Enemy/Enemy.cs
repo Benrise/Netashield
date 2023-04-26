@@ -3,7 +3,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField]
-    private int damage = 1;
+    private int damage = 10;
     [SerializeField]
     private float speed = 1.5f;
 
@@ -14,10 +14,12 @@ public class Enemy : MonoBehaviour
     private GameObject player;
 
     private Health health;
-
+    
 
     private float stopTime = 3f;
     private bool isStopped = false;
+
+
 
 
 
@@ -38,14 +40,11 @@ public class Enemy : MonoBehaviour
                 stopTime = 3f;
             }
         }
+
     }
 
 
 
-    private void OnMouseDown()
-    {
-        this.GetComponent<Health>().Damage(damage);
-    }
 
 
     private void SetEnemyValues(){
@@ -56,7 +55,9 @@ public class Enemy : MonoBehaviour
     }
 
     private void Direct(){
-        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+        if (gameObject != null){
+            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collider) {
@@ -70,6 +71,7 @@ public class Enemy : MonoBehaviour
 
         if (collider.CompareTag("Block")) {
             isStopped = true;
+            // FindObjectOfType<WaveSpawner>().enemiesStopped++;
         }
     }
 

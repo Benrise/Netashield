@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Enemy4
   m_EditorClassIdentifier: 
   hp: 10
-  damage: 0
+  damage: 50
   speed: 100
   cost: 0
