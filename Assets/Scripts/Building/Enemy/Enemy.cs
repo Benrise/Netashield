@@ -30,7 +30,7 @@ public class Enemy : MonoBehaviour
     }
 
     void Update(){
-        if(!isStopped){
+        if(!isStopped && gameObject != null){
             Direct();
         }
         if (isStopped) {
@@ -55,9 +55,8 @@ public class Enemy : MonoBehaviour
     }
 
     private void Direct(){
-        if (gameObject != null){
+        if (player != null)
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collider) {
@@ -65,13 +64,13 @@ public class Enemy : MonoBehaviour
         if(collider.CompareTag("Player")){
             if (collider.GetComponent<Health>() != null){
                 collider.GetComponent<Health>().Damage(damage);
-                this.GetComponent<Health>().Damage(10000);
+                Destroy(gameObject);
             }
         } 
 
         if (collider.CompareTag("Block")) {
             isStopped = true;
-            // FindObjectOfType<WaveSpawner>().enemiesStopped++;
+            this.GetComponent<Health>().Damage(15);
         }
     }
 

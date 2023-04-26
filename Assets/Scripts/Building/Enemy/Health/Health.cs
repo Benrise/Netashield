@@ -62,7 +62,7 @@ public class Health : MonoBehaviour
                 StartCoroutine(ShowDamage());
             Die();
         }
-        else
+        else if (gameObject.tag != "Enemy")
         {
             UpdateHealthBar();
             StartCoroutine(ShowDamage());
@@ -109,8 +109,12 @@ public class Health : MonoBehaviour
         Destroy(gameObject);
         StopAllCoroutines();
         if (gameObject.tag == "Enemy")
+        {
+            FindObjectOfType<WaveSpawner>().enemiesKilledCount++;
             return;
+        }
         LoseWindow.SetActive(true);
+
 
 
     }

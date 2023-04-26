@@ -20,13 +20,45 @@ public class WaveSpawner : MonoBehaviour
 
     public GameObject winWindow;
 
-    public int waveLevel;
+    [SerializeField] private int enemiesCount;
+    public int enemiesKilledCount;
 
-    private IEnumerator spawnEnemy(float interval, GameObject enemy){
-        yield return new WaitForSeconds(interval);
-        GameObject newEnemy = Instantiate(enemy, new Vector3(Random.Range(-500f, 500), Random.Range(-600f, 600f), 0), Quaternion.identity);
-        StartCoroutine(spawnEnemy(interval, enemy));
+    private bool isNeedMoreEnemy = false;
+
+    //1 lvl means 4 enemies spawned
+    [SerializeField] private int _waveLevel = 1;
+
+
+    void Update()
+    {
+        if (enemiesKilledCount == 4)
+        {
+            StopAllCoroutines();
+            winWindow.SetActive(true);
+        }
+        if (isNeedMoreEnemy)
+        {
+            StartCoroutine(spawnEnemy(enemy1, enemy1Prefub));
+            StartCoroutine(spawnEnemy(enemy2, enemy2Prefub));
+            StartCoroutine(spawnEnemy(enemy3, enemy3Prefub));
+            StartCoroutine(spawnEnemy(enemy4, enemy4Prefub));
+        }
     }
+    private IEnumerator spawnEnemy(float interval, GameObject enemy)
+    {
+        while (enemiesCount < _waveLevel)
+        {
+            yield return new WaitForSeconds(interval);
+            GameObject newEnemy = Instantiate(enemy, new Vector3(Random.Range(-500f, 500), Random.Range(-600f, 600f), 0), Quaternion.identity);
+            enemiesCount++;
+        }
+        if (enemiesCount > enemiesKilledCount)
+        {
+            isNeedMoreEnemy = true;
+
+        }
+    }
+
 
 
 

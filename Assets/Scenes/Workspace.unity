@@ -18404,8 +18404,9 @@ MonoBehaviour:
   enemy3Prefub: {fileID: 5995865591168872211, guid: 771bff3e9e103c649a752bd04e3913ba, type: 3}
   enemy4Prefub: {fileID: 691421513510665821, guid: 5a02c6b33e21aab49b8eee7013abc5b0, type: 3}
   winWindow: {fileID: 899716891}
-  enemiesStopped: 0
-  waveLevel: 0
+  enemiesCount: 0
+  enemiesStoppedCount: 0
+  _waveLevel: 1
 --- !u!1001 &1488554998
 PrefabInstance:
   m_ObjectHideFlags: 0
