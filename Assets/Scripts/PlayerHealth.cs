@@ -18,6 +18,7 @@ public class PlayerHealth : MonoBehaviour
 
 
     [SerializeField] private AudioSource deathSound;
+    [SerializeField] private AudioSource music;
     [SerializeField] private AudioSource getDamageSound;
     private bool isAlive;
 
@@ -53,6 +54,7 @@ public class PlayerHealth : MonoBehaviour
     IEnumerator showDeathWindow()
         {
             yield return new WaitForSeconds(3);
+            music.Stop();
             deathSound.Play();
             activeDeath.SetActive(true);
         }

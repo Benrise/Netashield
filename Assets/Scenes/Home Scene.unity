@@ -2254,7 +2254,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4127255065588125856, guid: 84acbfa0d5348ff439a5580fea7abb06, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4127255065588125856, guid: 84acbfa0d5348ff439a5580fea7abb06, type: 3}
       propertyPath: m_AnchorMax.x
@@ -8839,7 +8839,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4127255065588125856, guid: 84acbfa0d5348ff439a5580fea7abb06, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4127255065588125856, guid: 84acbfa0d5348ff439a5580fea7abb06, type: 3}
       propertyPath: m_AnchorMax.x
@@ -10060,9 +10060,9 @@ RectTransform:
   - {fileID: 522760472}
   - {fileID: 512236704}
   - {fileID: 1076612111}
+  - {fileID: 1044108875}
   - {fileID: 1335111958}
   - {fileID: 163733486}
-  - {fileID: 1044108875}
   - {fileID: 1016338540}
   - {fileID: 524589122}
   m_Father: {fileID: 0}
@@ -11727,7 +11727,7 @@ RectTransform:
   m_Children:
   - {fileID: 885123967}
   m_Father: {fileID: 1218587821}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -18584,6 +18584,7 @@ MonoBehaviour:
   _playerPosition: {fileID: 6171008094763080288}
   activeDeath: {fileID: 0}
   deathSound: {fileID: 0}
+  music: {fileID: 0}
   getDamageSound: {fileID: 0}
 --- !u!4 &6171008094055320420
 Transform:

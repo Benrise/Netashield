@@ -22,7 +22,7 @@ public class MainMenu : MonoBehaviour
 
     public void NewGame()
     {
-            PlayerPrefs.SetInt("isTutorialCompleted", 0);
+            PlayerPrefs.DeleteKey("gameComplete");
     }
 
 }
