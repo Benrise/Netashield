@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class BlinkingAttention : MonoBehaviour
 {
@@ -9,12 +8,28 @@ public class BlinkingAttention : MonoBehaviour
     public float blinkTime = 0.5f; // время одного мигания
     public float startDelay = 0f; // задержка перед началом мигания
 
+    private WaveSpawner _waveSpawner;
+
+
+    private void Update()
+    {
+        if (_waveSpawner.IsLevelEnd)
+        {
+            Debug.Log("Stop!");
+            StopCoroutine(Blink());
+        }
+    }
     private void Start()
     {
+        _waveSpawner = WaveSpawner.Instance;
         Color color = image.color;
         color.a = 0.5f;
         image.color = color;
-        StartCoroutine(Blink());
+        if (!_waveSpawner.IsLevelEnd)
+        {
+            Debug.Log("Start!");
+            StartCoroutine(Blink());
+        }
     }
 
     private IEnumerator Blink()
@@ -23,7 +38,7 @@ public class BlinkingAttention : MonoBehaviour
         color.a = 1f;
         yield return new WaitForSeconds(startDelay);
 
-        while (true)
+        while (!_waveSpawner.IsLevelEnd)
         {
             color = image.color;
             color.a = 1f;

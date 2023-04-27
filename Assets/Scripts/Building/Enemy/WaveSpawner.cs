@@ -1,75 +1,102 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject enemy1Prefub;
-    [SerializeField]
-    private GameObject enemy2Prefub;
-    [SerializeField]
-    private GameObject enemy3Prefub;
-    [SerializeField]
-    private GameObject enemy4Prefub;
+    [SerializeField] private Waves[] _waves;
 
-    private float enemy1 = 3.5f;
-    private float enemy2 = 4.5f;
-    private float enemy3 = 5.5f;
-    private float enemy4 = 6.5f;
+    private static WaveSpawner _instance;
+    public static WaveSpawner Instance { get { return _instance; } }
+    private int _currentEnemyIndex;
+    private int _currentWaveIndex;
+    private int _enemiesLeftToSpawn;
+
+    public bool IsLevelEnd;
 
     public GameObject winWindow;
 
-    [SerializeField] private int enemiesCount;
-    public int enemiesKilledCount;
 
-    private bool isNeedMoreEnemy = false;
-
-    //1 lvl means 4 enemies spawned
-    [SerializeField] private int _waveLevel = 1;
-
-
-    void Update()
+    private void Awake()
     {
-        if (enemiesKilledCount == 4)
-        {
-            StopAllCoroutines();
-            winWindow.SetActive(true);
-        }
-        if (isNeedMoreEnemy)
-        {
-            StartCoroutine(spawnEnemy(enemy1, enemy1Prefub));
-            StartCoroutine(spawnEnemy(enemy2, enemy2Prefub));
-            StartCoroutine(spawnEnemy(enemy3, enemy3Prefub));
-            StartCoroutine(spawnEnemy(enemy4, enemy4Prefub));
-        }
+        IsLevelEnd = false;
+        if (_instance != null && _instance != this)
+            Destroy(this.gameObject);
+        else
+            _instance = this;
     }
-    private IEnumerator spawnEnemy(float interval, GameObject enemy)
-    {
-        while (enemiesCount < _waveLevel)
-        {
-            yield return new WaitForSeconds(interval);
-            GameObject newEnemy = Instantiate(enemy, new Vector3(Random.Range(-500f, 500), Random.Range(-600f, 600f), 0), Quaternion.identity);
-            enemiesCount++;
-        }
-        if (enemiesCount > enemiesKilledCount)
-        {
-            isNeedMoreEnemy = true;
-
-        }
-    }
-
-
-
-
-
     void Start()
     {
-        StartCoroutine(spawnEnemy(enemy1, enemy1Prefub));
-        StartCoroutine(spawnEnemy(enemy2, enemy2Prefub));
-        StartCoroutine(spawnEnemy(enemy3, enemy3Prefub));
-        StartCoroutine(spawnEnemy(enemy4, enemy4Prefub));
+        _enemiesLeftToSpawn = _waves[0].WaveSettings.Length;
+        LaunchWave();
+
+    }
+
+    private IEnumerator SpawnEnemyInWave()
+    {
+        if (_enemiesLeftToSpawn > 0)
+        {
+            yield return new WaitForSeconds(_waves[_currentWaveIndex].WaveSettings[_currentEnemyIndex].SpawnDelay);
+
+            Instantiate(_waves[_currentWaveIndex].WaveSettings[_currentEnemyIndex].Enemy, _waves[_currentWaveIndex].WaveSettings[_currentEnemyIndex].NeededSpawner.transform.position, Quaternion.identity);
+
+            _enemiesLeftToSpawn--;
+            _currentEnemyIndex++;
+
+            StartCoroutine(SpawnEnemyInWave());
+        }
+        else
+        {
+            if (_currentWaveIndex < _waves.Length - 1)
+            {
+                _currentWaveIndex++;
+                _enemiesLeftToSpawn = _waves[_currentWaveIndex].WaveSettings.Length;
+                _currentEnemyIndex = 0;
+            }
+        }
     }
 
 
+    public void LaunchWave()
+    {
+        if (_currentWaveIndex == _waves.Length - 1 && _enemiesLeftToSpawn == 0)
+        {
+            winWindow.SetActive(true);
+            StopCoroutine(SpawnEnemyInWave());
+            IsLevelEnd = true;
+            return;
+        }
+        StartCoroutine(SpawnEnemyInWave());
+    }
+
+    public void StopTime()
+    {
+        Time.timeScale = 0f;
+    }
+    public void LaunchTime()
+    {
+        Time.timeScale = 1f;
+    }
+
 }
+
+[System.Serializable]
+public class Waves
+{
+    [SerializeField] private WaveSettings[] _waveSettings;
+    public WaveSettings[] WaveSettings { get => _waveSettings; }
+}
+
+[System.Serializable]
+public class WaveSettings
+{
+    [SerializeField] private GameObject _enemy;
+    public GameObject Enemy { get => _enemy; }
+
+    [SerializeField] private GameObject _neededSpawner;
+    public GameObject NeededSpawner { get => _neededSpawner; }
+
+    [SerializeField] private float _spawnDelay;
+    public float SpawnDelay { get => _spawnDelay; }
+
+}
+

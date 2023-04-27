@@ -95,6 +95,9 @@ public class BuildingSystem : MonoBehaviour
         }
         return false;
     }
+    
+
+  
 
 
     private void Build(Vector3Int position, BuildItem itemToBuild){

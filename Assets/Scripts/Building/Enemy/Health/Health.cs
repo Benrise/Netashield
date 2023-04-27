@@ -10,12 +10,15 @@ public class Health : MonoBehaviour
     //Show HP
     public Slider sliderHP;
 
-    public SpriteRenderer playerImage;
+    private SpriteRenderer _playerImage;
     public Color damageColor = Color.red;
 
     public GameObject LoseWindow;
 
     private int MAX_HEALTH = 100;
+
+
+    private RectTransform _rectTransform;
 
     void Update()
     {
@@ -30,10 +33,11 @@ public class Health : MonoBehaviour
 
     private void Start()
     {
+        _rectTransform = GetComponent<RectTransform>();
         if (gameObject.tag == "Enemy")
             return;
         sliderHP.value = 1.0f;
-        playerImage = GetComponent<SpriteRenderer>();
+        _playerImage = GetComponent<SpriteRenderer>();
     }
 
     private void UpdateHealthBar()
@@ -71,9 +75,9 @@ public class Health : MonoBehaviour
 
     IEnumerator ShowDamage()
     {
-        playerImage.color = damageColor; // устанавливаем цвет подсветки
+        _playerImage.color = damageColor; // устанавливаем цвет подсветки
         yield return new WaitForSeconds(0.1f); // ждем 0.1 секунды
-        playerImage.color = Color.white; // возвращаем исходный цвет
+        _playerImage.color = Color.white; // возвращаем исходный цвет
     }
 
 
@@ -110,9 +114,11 @@ public class Health : MonoBehaviour
         StopAllCoroutines();
         if (gameObject.tag == "Enemy")
         {
-            FindObjectOfType<WaveSpawner>().enemiesKilledCount++;
+            // FindObjectOfType<WaveSpawner>().enemiesKilledCount++;
             return;
         }
+        Time.timeScale = 0;
+        StopAllCoroutines();
         LoseWindow.SetActive(true);
 
 
